@@ -7,3 +7,7 @@ Obdi plugin to view system jobs.
 
 ## What is it?
 
+An Obdi plugin to view system jobs.
+
+See [obdi-salt-repository](https://github.com/mclarkson/obdi-salt-repository)
+for more information.
