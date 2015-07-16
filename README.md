@@ -11,7 +11,7 @@ All scripts are run on local or remote Obdi Workers. A script is run as a job an
                                                                                                                                                                                     
 This plugin allows the user to view all the job details, and also allows a running script to be stopped.                                                                            
                                                                                                                                                                                     
-**NOTE**:Any user can view the output of any job.
+**NOTE**: Any user can view the output of any job.
 
 See [obdi-core-repository](https://github.com/mclarkson/obdi-core-repository)
 for more information.
