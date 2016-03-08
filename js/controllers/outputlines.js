@@ -18,7 +18,7 @@
 // AngularJS Controller
 // ------------------------------------------------------------------------
 
-mgrApp.controller("outputlinesCtrl", function ($scope,$http,$modal,$log,
+mgrApp.controller("outputlinesCtrl", function ($scope,$http,$uibModal,$log,
   $timeout,baseUrl,$rootScope) {
 
   $scope.outputlines = [];

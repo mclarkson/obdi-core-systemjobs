@@ -18,7 +18,7 @@
 // AngularJS Controller
 // ------------------------------------------------------------------------
 
-mgrApp.controller("systemjobsCtrl", function ($scope,$http,$modal,$log,
+mgrApp.controller("systemjobsCtrl", function ($scope,$http,$uibModal,$log,
       $timeout,baseUrl,$rootScope) {
 
   $scope.jobs = [];
@@ -237,7 +237,7 @@ mgrApp.controller("systemjobsCtrl", function ($scope,$http,$modal,$log,
     $scope.Name = Name;
     $scope.id = id;
 
-    var modalInstance = $modal.open({
+    var modalInstance = $uibModal.open({
       templateUrl: 'myModalContent.html',
       controller: $scope.ModalInstanceCtrl,
       size: 'sm',
@@ -261,7 +261,7 @@ mgrApp.controller("systemjobsCtrl", function ($scope,$http,$modal,$log,
   };
 
   // --------------------------------------------------------------------
-  $scope.ModalInstanceCtrl = function ($scope, $modalInstance, Name, id) {
+  $scope.ModalInstanceCtrl = function ($scope, $uibModalInstance, Name, id) {
   // --------------------------------------------------------------------
 
     // So the template can access 'loginname' in this new scope
@@ -269,11 +269,11 @@ mgrApp.controller("systemjobsCtrl", function ($scope,$http,$modal,$log,
     $scope.id = id;
 
     $scope.ok = function () {
-      $modalInstance.close();
+      $uibModalInstance.close();
     };
 
     $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
+      $uibModalInstance.dismiss('cancel');
     };
   };
 
@@ -286,7 +286,7 @@ mgrApp.controller("systemjobsCtrl", function ($scope,$http,$modal,$log,
     //$scope.id = id;
     $scope.job = $.grep($scope.jobs, function(e){ return e.Id == id; })[0];
 
-    var modalInstance = $modal.open({
+    var modalInstance = $uibModal.open({
       templateUrl: 'jobdetails.html',
       controller: $scope.JobDetailsInstCtrl,
       size: 'md',
@@ -307,7 +307,7 @@ mgrApp.controller("systemjobsCtrl", function ($scope,$http,$modal,$log,
   };
 
   // --------------------------------------------------------------------
-  $scope.JobDetailsInstCtrl = function ($scope, $modalInstance, job) {
+  $scope.JobDetailsInstCtrl = function ($scope, $uibModalInstance, job) {
   // --------------------------------------------------------------------
 
     $scope.prettyDate = function( d ) {
@@ -367,11 +367,11 @@ mgrApp.controller("systemjobsCtrl", function ($scope,$http,$modal,$log,
     $scope.job = job;
 
     $scope.ok = function () {
-      $modalInstance.close();
+      $uibModalInstance.close();
     };
 
     $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
+      $uibModalInstance.dismiss('cancel');
     };
   };
 
