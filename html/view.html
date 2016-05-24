@@ -155,11 +155,11 @@
           class="{{style(job.Status)}}">
             <td>{{prettyDate(job.CreatedAt)}}</td>
             <td>{{job.Id}}</td>
-            <td><span class="mypopover" popover="{{job.ScriptDesc}}"
+            <td><span class="mypopover" uib-popover="{{job.ScriptDesc}}"
               popover-trigger="mouseenter">
               {{job.ScriptName}}</span>
             </td>
-            <td><span class="mypopover" popover="{{job.StatusReason}}"
+            <td><span class="mypopover" uib-popover="{{job.StatusReason}}"
               popover-trigger="mouseenter">
               {{lookupErrorCode(job.Status)}}</span>
             </td>
