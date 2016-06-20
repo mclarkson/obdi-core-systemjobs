@@ -29,7 +29,11 @@ mgrApp.controller("outputlinesCtrl", function ($scope,$http,$uibModal,$log,
   $scope.goBack = function( id ) {
   // ----------------------------------------------------------------------
 
-    $scope.setView( "plugins/systemjobs/html/view.html" );
+    if( typeof $rootScope.outputlines_plugin.back === "undefined" ) {
+      $scope.setView( "plugins/systemjobs/html/view.html" );
+    } else {
+      $scope.setView( $rootScope.outputlines_plugin.back )
+    }
   }
 
   // ----------------------------------------------------------------------
