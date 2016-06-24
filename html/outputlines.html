@@ -49,8 +49,17 @@
 
       <h4>Output for Job ID {{outputlines_plugin.id}}</h4>
 
-      <div class="table-responsive">
+      <div class="table-responsive" ng-if="jobs.Type == 1">
         <pre><div ng-repeat="line in outputlines">{{line.Text}}</div></pre>
+      </div> <!-- /table-responsive -->
+
+      <div class="table-responsive" ng-if="jobs.Type == 2">
+        <table class="table borderless" style="margin-top: 4px">
+          <tr ng-repeat="line in outputlines">
+            <!--<td style="width: 5em; padding: 0;">{{line.Serial}}</td>-->
+            <td style="padding: 0;"><tt>{{line.Text}}<tt></td>
+          </tr>
+        </table>
       </div> <!-- /table-responsive -->
 
     </div>

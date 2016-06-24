@@ -22,6 +22,7 @@ mgrApp.controller("outputlinesCtrl", function ($scope,$http,$uibModal,$log,
   $timeout,baseUrl,$rootScope) {
 
   $scope.outputlines = [];
+  $scope.jobs = {};
 
   $rootScope.$broadcast( "searchdisabled", true );
 
@@ -44,6 +45,41 @@ mgrApp.controller("outputlinesCtrl", function ($scope,$http,$uibModal,$log,
     $scope.login.error = false;
     $scope.error = false;
   }
+
+  // ----------------------------------------------------------------------
+  $scope.FillJobsTable = function( id ) {
+  // ----------------------------------------------------------------------
+
+    $http({
+      method: 'GET',
+      url: baseUrl + "/" + $scope.login.userid + "/" + $scope.login.guid
+           + "/jobs?job_id=" + id
+    }).success( function(data, status, headers, config) {
+
+      $scope.jobs = data[0];
+      $scope.FillOutputlinesTable( );
+
+    }).error( function(data,status) {
+      if (status>=500) {
+        $scope.login.errtext = "Server error.";
+        $scope.login.error = true;
+        $scope.login.pageurl = "login.html";
+      } else if (status>=400) {
+        $scope.login.errtext = "Session expired.";
+        $scope.login.error = true;
+        $scope.login.pageurl = "login.html";
+      } else if (status==0) {
+        // This is a guess really
+        $scope.login.errtext = "Could not connect to server.";
+        $scope.login.error = true;
+        $scope.login.pageurl = "login.html";
+      } else {
+        $scope.login.errtext = "Logged out due to an unknown error.";
+        $scope.login.error = true;
+        $scope.login.pageurl = "login.html";
+      }
+    });
+  };
 
   // ----------------------------------------------------------------------
   $scope.FillOutputlinesTable = function() {
@@ -79,7 +115,7 @@ mgrApp.controller("outputlinesCtrl", function ($scope,$http,$uibModal,$log,
     });
   };
 
-  $scope.FillOutputlinesTable( );
+  $scope.FillJobsTable( $rootScope.outputlines_plugin.id );
 
 });
 
